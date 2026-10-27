@@ -1,35 +1,31 @@
-# Environments
+# Environment secrets
 .env
-.env.local
-.venv
+.env.*
+!.env.example
+
+# Python environments
+.venv/
 venv/
 ENV/
 env.bak/
 venv.bak/
 
-# Python
+# Python caches and artifacts
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
 *.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+
+# Local databases and backups
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
 
 # Next.js / Node
 node_modules/
@@ -39,34 +35,17 @@ build/
 .pnp
 .pnp.js
 coverage/
-.vercel
+.vercel/
 *.tsbuildinfo
 next-env.d.ts
 
-# IDEs
+# IDEs and OS files
 .idea/
 .vscode/
 *.swp
 *.swo
-
-# OS
 .DS_Store
 Thumbs.db
-
-# Environment secrets
-.env.*
-!.env.example
-
-# Local databases and database backups
-*.db
-*.sqlite
-*.sqlite3
-*.db-journal
-
-# Python test/cache artifacts
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
 
 # Logs
 *.log
