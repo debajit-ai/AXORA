@@ -70,3 +70,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Local frontend Git metadata backup
+frontend/.git-backup/
