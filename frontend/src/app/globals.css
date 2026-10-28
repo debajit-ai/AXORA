@@ -1,47 +1,174 @@
 @import "tailwindcss";
 
 :root {
-  --background: #08090d;
-  --foreground: #f1f5f9;
-  --surface-1: #0e111a;
-  --surface-2: #141926;
-  --surface-3: #1a2030;
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-highlight: rgba(99, 102, 241, 0.25);
+  /* CampVion Elite Pitch-Black & Neon-Green Enterprise Design Tokens */
+  --background: #000000;
+  --foreground: #F2F4F7;
+
+  /* Surface Elevation Hierarchy (Clean Charcoal on Pitch Black) */
+  --surface-obsidian: #000000;
+  --surface-primary: #090B0E;
+  --surface-elevated: #0E1217;
+  --surface-interactive: #141920;
+
+  /* Borders & Dividers */
+  --border-subtle: #1E242C;
+  --border-muted: rgba(30, 36, 44, 0.78);
+  --border-highlight: rgba(57, 255, 20, 0.35);
+
+  /* Brand & Semantic Accents */
+  --accent-neon-highlight: #39FF14;
+  --accent-neon-green: #00D957;
+  --accent-emerald-smoke: #008F45;
+  --accent-deep-green: #003B1F;
+  --accent-indigo: #685BFF;
+  --accent-blue: #64A7FF;
+  --status-emerald: #20C997;
+  --status-amber: #F2B84B;
+  --status-coral: #F16D78;
+
+  /* Typography Hierarchy */
+  --text-primary: #F2F4F7;
+  --text-secondary: #D0D6E0;
+  --text-muted: #8A94A6;
 }
 
+html,
 body {
-  background-color: var(--background);
+  background-color: #000000;
   color: var(--foreground);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* Custom scrollbar */
+/* Transparent workspace container over pitch-black background */
+.axora-bg-grid {
+  background-color: transparent;
+  background-image: none;
+}
+
+/* Restrained, localized corner & outer-edge atmospheric smoke wisps */
+.neon-smoke-layer {
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.neon-smoke-layer-1 {
+  background:
+    radial-gradient(ellipse 22% 16% at 6% 18%, rgba(0, 143, 69, 0.08) 0%, rgba(0, 59, 31, 0.035) 48%, transparent 78%),
+    radial-gradient(ellipse 24% 18% at 94% 84%, rgba(0, 217, 87, 0.085) 0%, rgba(0, 59, 31, 0.035) 50%, transparent 78%);
+  filter: blur(68px);
+  animation: neonSmokeDrift1 46s ease-in-out infinite alternate;
+}
+
+.neon-smoke-layer-2 {
+  background:
+    radial-gradient(ellipse 20% 16% at 92% 22%, rgba(0, 143, 69, 0.07) 0%, rgba(0, 59, 31, 0.03) 48%, transparent 76%),
+    radial-gradient(ellipse 22% 16% at 8% 86%, rgba(0, 143, 69, 0.075) 0%, rgba(0, 59, 31, 0.03) 48%, transparent 76%);
+  filter: blur(74px);
+  animation: neonSmokeDrift2 56s ease-in-out infinite alternate;
+}
+
+@keyframes neonSmokeDrift1 {
+  0% {
+    transform: translate3d(-1.5%, -1%, 0) scale(1);
+    opacity: 0.72;
+  }
+  50% {
+    transform: translate3d(1.5%, 1%, 0) scale(1.03, 0.98);
+    opacity: 0.88;
+  }
+  100% {
+    transform: translate3d(2%, -1.5%, 0) scale(1.01, 1.02);
+    opacity: 0.76;
+  }
+}
+
+@keyframes neonSmokeDrift2 {
+  0% {
+    transform: translate3d(1.5%, 1.5%, 0) scale(1.02, 0.99);
+    opacity: 0.68;
+  }
+  100% {
+    transform: translate3d(-2%, 1%, 0) scale(1.03, 1.01);
+    opacity: 0.84;
+  }
+}
+
+/* Primary & Elevated Surfaces — Clean Enterprise Charcoal Panels on Pitch Black */
+.glass-panel,
+.axora-panel {
+  background: rgba(9, 11, 14, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #1E242C;
+  box-shadow:
+    0 8px 28px -4px rgba(0, 0, 0, 0.92),
+    inset 0 1px 0 0 rgba(242, 244, 247, 0.04);
+}
+
+.axora-panel-elevated {
+  background: #0E1217;
+  border: 1px solid #1E242C;
+}
+
+.glass-panel-hover {
+  transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(57, 255, 20, 0.35);
+  box-shadow: 0 6px 24px -4px rgba(0, 0, 0, 0.9);
+}
+
+/* Accessible keyboard focus states */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #39FF14;
+  outline-offset: 2px;
+}
+
+/* Custom precision scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #08090d;
+  background: #000000;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.25);
-  border-radius: 4px;
+  background: #1E242C;
+  border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.45);
+  background: #39FF14;
 }
 
-/* Glassmorphism panel styling */
-.glass-panel {
-  background: rgba(14, 17, 26, 0.75);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
+/* Respect reduced motion preferences with a clean static fallback */
+@media (prefers-reduced-motion: reduce) {
+  .neon-smoke-layer-1,
+  .neon-smoke-layer-2 {
+    animation: none !important;
+    transform: none !important;
+  }
 
-.glass-panel-hover:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.08);
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -1,7 +1,7 @@
-# Project 55 — Agentic AI Assistant for Multi-Step Campus Service Workflows
+# CampVion — Intelligent Campus Operations (Project 55)
 
 ## Project Purpose
-Project 55 aims to build a genuinely **agentic** campus service assistant. Unlike traditional chatbots that use simple intent-matching or rigid dialogue trees, this system operates autonomously to solve multi-step campus service workflows. It is capable of goal decomposition, tool selection, failure detection, dynamic replanning, and deferring to human approval for consequential actions.
+**CampVion** (Project 55) is an **Intelligent Campus Operations** platform and genuinely **agentic** campus service assistant. Unlike traditional chatbots that use simple intent-matching or rigid dialogue trees, this system operates autonomously to solve multi-step campus service workflows. It is capable of goal decomposition, tool selection, failure detection, dynamic replanning, and deferring to human approval for consequential actions.
 
 ## Problem Definition
 University campuses involve complex, multi-step administrative workflows (e.g., applying for leave, booking lab slots, raising maintenance requests). Current solutions are either disjointed web portals or simplistic chatbots that cannot navigate unexpected failures. Project 55 solves this by introducing a reasoning-capable agent that interacts with (simulated) campus APIs and handles edge cases autonomously.

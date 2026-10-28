@@ -1,6 +1,8 @@
 import {
   AgentResult,
   AgentState,
+  AttendanceRecord,
+  CourseRecord,
   HealthResponse,
   RunAgentPayload,
   Student,
@@ -48,7 +50,12 @@ async function fetchJson<T>(endpoint: string, options: RequestInit = {}): Promis
 
       let message = `API request failed: ${res.status} ${res.statusText}`;
       if (typeof errorBody === "object" && errorBody !== null && "detail" in errorBody) {
-        message = String((errorBody as { detail: unknown }).detail);
+        const detail = (errorBody as { detail: unknown }).detail;
+        if (typeof detail === "object" && detail !== null && "message" in detail) {
+          message = String((detail as { message: unknown }).message);
+        } else {
+          message = String(detail);
+        }
       }
       throw new ApiError(message, res.status, errorBody);
     }
@@ -80,8 +87,20 @@ export const apiClient = {
     return fetchJson<Student>(`/students/${studentId}`);
   },
 
+  async getStudentAttendance(studentId: string): Promise<AttendanceRecord[]> {
+    return fetchJson<AttendanceRecord[]>(`/students/${studentId}/attendance`);
+  },
+
+  async getStudentCourses(studentId: string): Promise<CourseRecord[]> {
+    return fetchJson<CourseRecord[]>(`/students/${studentId}/courses`);
+  },
+
   async listTools(): Promise<ToolSchema[]> {
     return fetchJson<ToolSchema[]>("/tools/");
+  },
+
+  async getTool(toolName: string): Promise<ToolSchema> {
+    return fetchJson<ToolSchema>(`/tools/${toolName}`);
   },
 
   async runAgent(payload: RunAgentPayload): Promise<AgentResult> {

@@ -1,6 +1,6 @@
-# AXORA - Backend
+# CampVion - Backend
 
-This is the backend for AXORA (Adaptive eXecution & Orchestration for Responsive Assistance). It provides the core APIs and tool abstractions used by the AXORA agentic system.
+This is the backend for **CampVion** (Intelligent Campus Operations). It provides the core APIs and tool abstractions used by the CampVion agentic system.
 
 ## Architecture
 
@@ -14,7 +14,7 @@ The backend follows a modular, production-ready structure:
 
 ## Why a Tool Abstraction?
 
-Unlike standard conversational chatbots, AXORA is designed as an agentic system. The agent doesn't directly call internal Python services. Instead, it interacts through a **Tool Registry**. Each tool explicitly defines its metadata, input schemas, and whether it requires human approval. This allows an LLM planner to dynamically discover and compose actions.
+Unlike standard conversational chatbots, CampVion is designed as an agentic system. The agent doesn't directly call internal Python services. Instead, it interacts through a **Tool Registry**. Each tool explicitly defines its metadata, input schemas, and whether it requires human approval. This allows an LLM planner to dynamically discover and compose actions.
 
 ## Setup & Running
 

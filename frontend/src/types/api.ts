@@ -11,6 +11,13 @@ export type WorkflowStatus =
 
 export type HumanApprovalStatus = "NONE" | "PENDING" | "APPROVED" | "REJECTED";
 
+export type WorkspaceSection =
+  | "unified"
+  | "workspace"
+  | "observability"
+  | "evaluation"
+  | "registry";
+
 export interface HealthResponse {
   status: string;
   service: string;
@@ -32,6 +39,13 @@ export interface AttendanceRecord {
   course_id: number;
   attended_classes: number;
   total_classes: number;
+}
+
+export interface CourseRecord {
+  id: number;
+  course_code: string;
+  course_name: string;
+  faculty: string;
 }
 
 export interface ToolSchema {
@@ -114,4 +128,18 @@ export interface TraceItem {
 export interface RunAgentPayload {
   student_id: string;
   goal: string;
+}
+
+export interface WorkflowSessionSummary {
+  request_id: number;
+  student_id: string;
+  goal: string;
+  status: WorkflowStatus;
+  completed_count: number;
+  total_tasks: number;
+  replanning_count: number;
+  human_approval_status: HumanApprovalStatus;
+  execution_time: number;
+  final_message: string;
+  updated_at: string;
 }
